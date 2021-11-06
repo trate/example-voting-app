@@ -30,10 +30,10 @@ pipeline {
     }
     post {
         success {
-            slackSend color: "good", message: "Result pipeline successfully completed!"
+            slackSend color: "good", message: "Result pipeline successfully completed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
 	}
 	failure {
-            slackSend color: "danger", message: "Result pipeline failed!"
+            slackSend color: "danger", message: "Result pipeline failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
 	}
         always {
             echo 'Pipeline for result is complete'
