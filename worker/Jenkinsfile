@@ -41,9 +41,16 @@ pipeline {
         }
     }
     post {
+        success {
+            slackSend color: "good", message: "Worker pipeline successfully completed!"
+	}
+	failure {
+            slackSend color: "danger", message: "Worker pipeline failed!"
+	}
         always {
             echo 'Pipeline for worker is complete'
         }
+
     }
     
 }
